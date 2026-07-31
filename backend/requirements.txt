@@ -41,8 +41,11 @@ pyloudnorm
 torchaudio
 
 # Kokoro TTS (lightweight 82M-param engine)
+# NOTE: misaki[ja] dropped locally — pulls pyopenjtalk which needs CMake+MSVC
+# to compile from source (absent on this machine). Only loses Kokoro Japanese
+# G2P; Hindi/English/Chinese and all other engines unaffected.
 kokoro>=0.9.4
-misaki[en,ja,zh]>=0.9.4
+misaki[en,zh]>=0.9.4
 # spacy model for misaki English G2P — must be pre-installed or misaki
 # tries spacy.cli.download() at runtime which crashes frozen builds
 en_core_web_sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.8.0/en_core_web_sm-3.8.0-py3-none-any.whl
